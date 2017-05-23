@@ -161,10 +161,19 @@ public class DrawBasicMap : MonoBehaviour{
         }
         for (int i = 0; i < 80; i++){
             if (i % 3 == 0){
-                Instantiate(ChildrenPrefab, rooms.get(Random.Range(0, rooms.Size() - 1)).getRandomVector3(2),transform.rotation);
+                Instantiate(ChildrenPrefab, rooms.get(Random.Range(0, rooms.Size() - 1)).getRandomVector3(2),
+                    transform.rotation);
 
-            }else
-            Instantiate(EnemyPrefab, rooms.get(Random.Range(0, rooms.Size() - 1)).getRandomVector3(2),transform.rotation);
+            }
+            else{
+                if (EnemyPrefab != null)
+                    Instantiate(EnemyPrefab, rooms.get(Random.Range(0, rooms.Size() - 1)).getRandomVector3(2),
+                        transform.rotation);
+                else{
+                    Debug.Log("Enemy prefab is null?");
+                }
+
+            }
         }
 
     }
